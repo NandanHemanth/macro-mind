@@ -157,7 +157,20 @@ elif page == "🏋️ Cbuminator":
         else:
             st.error("Could not evaluate performance")
     st_lottie(cbuminator_animation, height=300, key="cbum")
-    
+
+
+st.markdown("""
+<style>
+.footer {
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+    font-size: 16px;
+}
+</style>
+<div class='footer'>Made by MacroMind with ❤️</div>
+""", unsafe_allow_html=True)
 
 
 
