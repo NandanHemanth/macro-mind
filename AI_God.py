@@ -32,3 +32,11 @@ class AITrainer:
                             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
         conn.commit()
         conn.close()
+
+    def _log_exercise(self, reps, score, calories):
+        conn = sqlite3.connect("./database/user_exercises.db")
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO exercise_log (exercise_id, exercise_name, reps, score, calories) VALUES (?, ?, ?, ?, ?)", 
+                    (100, self.exercise_name, reps, score, calories))
+        conn.commit()
+        conn.close()
