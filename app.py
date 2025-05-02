@@ -10,10 +10,9 @@ import subprocess
 import sqlite3
 from streamlit_lottie import st_lottie
 from PIL import Image
-from keto_god import recognize_food, get_nutrition_facts, suggest_recipes, save_meal_data
 import matplotlib.pyplot as plt
 import plotly.express as px
-from flexpert_analytics import load_json_data, load_sqlite_data, fetch_meal_plan
+
 
 
 class UserProfileManager:
@@ -116,8 +115,7 @@ class Nutritionist:
                     macro_data["Carbs"] += value
         return macro_data
     
-        def get_meal_plan(self):
-            return suggest_recipes(self.detected_foods)
+
 
 profile_manager = UserProfileManager()
 nutritionist = Nutritionist()
@@ -129,7 +127,7 @@ pet_animation = LottieLoader.load("https://lottie.host/27b7d9f3-211d-4ce8-b8a3-4
 shopping_animation = LottieLoader.load('https://lottie.host/bb02a444-4aa8-4fea-bd38-d46fae3b0baf/XDdL3IbPh7.json')
 
 st.sidebar.title("🚀 MacroMind Menu")
-page = st.sidebar.radio("Personal AI Hub", ["🏠 Profile", "🏋️ Cbuminator", "🥗 Keto-Kat", "📊 Flexpert", "🛒 Shopping"])
+page = st.sidebar.radio("Personal AI Hub", ["🏠 Profile", "🏋️ Cbuminator"])
 
 with st.sidebar:
     st_lottie(pet_animation, height=200, key="keto_pet")
@@ -147,53 +145,19 @@ if page == "🏠 Profile":
         profile_manager.save_data(name, height, weight, goal, dietary_restriction)
         st.success("Profile saved!")
 
-    elif page == "🏋️ Cbuminator":
-        st.header("Meet Cbuminator")
-        exercise = st.selectbox("Choose Exercise", ["Bicep Curls", "Squats", "Push-ups"])
-        reps = st.slider("Reps", 2, 20)
-        if st.button("Start Training"):
-            score, calories = AITrainer.run(exercise, reps)
-            if score is not None and calories is not None:
-                st.success(f"Form Score: {score}%")
-                st.success(f"Calories Burned: {calories} kcal")
-            else:
-                st.error("Could not evaluate performance")
-        st_lottie(cbuminator_animation, height=300, key="cbum")
+elif page == "🏋️ Cbuminator":
+    st.header("Meet Cbuminator")
+    exercise = st.selectbox("Choose Exercise", ["Bicep Curls", "Squats", "Push-ups"])
+    reps = st.slider("Reps", 2, 20)
+    if st.button("Start Training"):
+        score, calories = AITrainer.run(exercise, reps)
+        if score is not None and calories is not None:
+            st.success(f"Form Score: {score}%")
+            st.success(f"Calories Burned: {calories} kcal")
+        else:
+            st.error("Could not evaluate performance")
+    st_lottie(cbuminator_animation, height=300, key="cbum")
     
 
-    elif page == "🥗 Keto-Kat":
-        st.header("Meet Keto-Kat")
-        uploaded_file = st.file_uploader("Upload food image", type=["jpg", "jpeg", "png"])
-        if uploaded_file:
-            path = "./database/uploaded_food.jpg"
-            with open(path, "wb") as f:
-                f.write(uploaded_file.getbuffer())
-            st.image(path, caption="Uploaded Image")
-            foods, nutrition = nutritionist.recognize_and_analyze(path)
-            st.write(nutrition)
-            macros = nutritionist.get_macro_breakdown(nutrition)
-            fig, ax = plt.subplots()
-            ax.pie(macros.values(), labels=macros.keys(), autopct='%1.1f%%')
-            ax.axis("equal")
-            st.pyplot(fig)
-            if st.button("Get Meal Plan"):
-                meal_plan = nutritionist.get_meal_plan()
-                st.write(meal_plan)
-                save_meal_data(foods, nutrition, meal_plan)
-        st_lottie(keto_kat_animation, height=300, key="keto")
 
-    elif page == "📊 Flexpert":
-        st.header("Flexpert Dashboard")
-        exercise_log = load_json_data("./database/exercise_log.json")
-        user_data = load_json_data("./database/user_data.json")
-        exercise_df = load_sqlite_data()
-        if st.button("Generate Plan"):
-            meal_plan = fetch_meal_plan(
-                [log["exercise_name"] for log in exercise_log],
-                user_data.get("goal", "Maintain")
-            )
-            st.subheader("Meal Plan")
-            st.write(meal_plan)
-            st.subheader("Performance Charts")
-            st.plotly_chart(px.bar(exercise_df, x="timestamp", y="calories", color="exercise_name"))
-            st.plotly_chart(px.line(exercise_df, x="timestamp", y="score", color="exercise_name"))
+
