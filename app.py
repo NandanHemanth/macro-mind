@@ -81,3 +81,19 @@ class Nutritionist:
         self.detected_foods = recognize_food(image_path)
         nutrition_facts = get_nutrition_facts(self.detected_foods)
         return self.detected_foods, nutrition_facts
+
+    def get_macro_breakdown(self, nutrition_facts):
+        macro_data = {"Calories": 0, "Proteins": 0, "Fats": 0, "Carbs": 0}
+        for line in nutrition_facts.split("\n"):
+            digits = "".join(filter(str.isdigit, line))
+            if digits:
+                value = int(digits)
+                if "calories" in line.lower():
+                    macro_data["Calories"] += value
+                elif "protein" in line.lower():
+                    macro_data["Proteins"] += value
+                elif "fat" in line.lower():
+                    macro_data["Fats"] += value
+                elif "carb" in line.lower():
+                    macro_data["Carbs"] += value
+        return macro_data
