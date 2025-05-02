@@ -22,3 +22,14 @@ class UserProfileManager:
             "dietary_restriction": ""
         }
         self.init_data()
+
+class LottieLoader:
+    @staticmethod
+    def load(url):
+        try:
+            r = requests.get(url)
+            if r.status_code != 200:
+                return None
+            return r.json()
+        except:
+            return None
