@@ -133,3 +133,17 @@ page = st.sidebar.radio("Personal AI Hub", ["🏠 Profile", "🏋️ Cbuminator"
 
 with st.sidebar:
     st_lottie(pet_animation, height=200, key="keto_pet")
+
+
+if page == "🏠 Profile":
+    st.header("Your Profile")
+    name, height, weight, goal, dietary_restriction = profile_manager.load_data()
+    name = st.text_input("Name:", name)
+    height = st.number_input("Height (cm):", min_value=100, max_value=250, value=height)
+    weight = st.number_input("Weight (kg):", min_value=30, max_value=200, value=weight)
+    goal = st.text_input("Fitness Goal:", goal)
+    dietary_restriction = st.text_area("Dietary Restrictions:", dietary_restriction)
+    if st.button("Save Profile"):
+        profile_manager.save_data(name, height, weight, goal, dietary_restriction)
+        st.success("Profile saved!")
+
