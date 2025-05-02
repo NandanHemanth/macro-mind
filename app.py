@@ -10,6 +10,11 @@ import subprocess
 import sqlite3
 from streamlit_lottie import st_lottie
 from PIL import Image
+from keto_god import recognize_food, get_nutrition_facts, suggest_recipes, save_meal_data
+import matplotlib.pyplot as plt
+import plotly.express as px
+from flexpert_analytics import load_json_data, load_sqlite_data, fetch_meal_plan
+
 
 class UserProfileManager:
     def __init__(self, path="./database/user_data.json"):
@@ -38,6 +43,20 @@ class UserProfileManager:
         }
         with open(self.path, "w") as f:
             json.dump(data, f, indent=4)
+    def load_data(self):
+        try:
+            with open(self.path, "r") as f:
+                data = json.load(f)
+                return (
+                    data.get("name", ""),
+                    data.get("height", 170),
+                    data.get("weight", 70),
+                    data.get("goal", ""),
+                    data.get("dietary_restriction", "")
+                )
+        except:
+            self.init_data()
+            return ("", 170, 70, "", "")
         
 
 
