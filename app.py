@@ -162,22 +162,38 @@ if page == "🏠 Profile":
     
 
     elif page == "🥗 Keto-Kat":
-    st.header("Meet Keto-Kat")
-    uploaded_file = st.file_uploader("Upload food image", type=["jpg", "jpeg", "png"])
-    if uploaded_file:
-        path = "./database/uploaded_food.jpg"
-        with open(path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        st.image(path, caption="Uploaded Image")
-        foods, nutrition = nutritionist.recognize_and_analyze(path)
-        st.write(nutrition)
-        macros = nutritionist.get_macro_breakdown(nutrition)
-        fig, ax = plt.subplots()
-        ax.pie(macros.values(), labels=macros.keys(), autopct='%1.1f%%')
-        ax.axis("equal")
-        st.pyplot(fig)
-        if st.button("Get Meal Plan"):
-            meal_plan = nutritionist.get_meal_plan()
+        st.header("Meet Keto-Kat")
+        uploaded_file = st.file_uploader("Upload food image", type=["jpg", "jpeg", "png"])
+        if uploaded_file:
+            path = "./database/uploaded_food.jpg"
+            with open(path, "wb") as f:
+                f.write(uploaded_file.getbuffer())
+            st.image(path, caption="Uploaded Image")
+            foods, nutrition = nutritionist.recognize_and_analyze(path)
+            st.write(nutrition)
+            macros = nutritionist.get_macro_breakdown(nutrition)
+            fig, ax = plt.subplots()
+            ax.pie(macros.values(), labels=macros.keys(), autopct='%1.1f%%')
+            ax.axis("equal")
+            st.pyplot(fig)
+            if st.button("Get Meal Plan"):
+                meal_plan = nutritionist.get_meal_plan()
+                st.write(meal_plan)
+                save_meal_data(foods, nutrition, meal_plan)
+        st_lottie(keto_kat_animation, height=300, key="keto")
+
+    elif page == "📊 Flexpert":
+        st.header("Flexpert Dashboard")
+        exercise_log = load_json_data("./database/exercise_log.json")
+        user_data = load_json_data("./database/user_data.json")
+        exercise_df = load_sqlite_data()
+        if st.button("Generate Plan"):
+            meal_plan = fetch_meal_plan(
+                [log["exercise_name"] for log in exercise_log],
+                user_data.get("goal", "Maintain")
+            )
+            st.subheader("Meal Plan")
             st.write(meal_plan)
-            save_meal_data(foods, nutrition, meal_plan)
-    st_lottie(keto_kat_animation, height=300, key="keto")
+            st.subheader("Performance Charts")
+            st.plotly_chart(px.bar(exercise_df, x="timestamp", y="calories", color="exercise_name"))
+            st.plotly_chart(px.line(exercise_df, x="timestamp", y="score", color="exercise_name"))
