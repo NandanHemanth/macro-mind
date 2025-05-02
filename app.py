@@ -159,3 +159,25 @@ if page == "🏠 Profile":
             else:
                 st.error("Could not evaluate performance")
         st_lottie(cbuminator_animation, height=300, key="cbum")
+    
+
+    elif page == "🥗 Keto-Kat":
+    st.header("Meet Keto-Kat")
+    uploaded_file = st.file_uploader("Upload food image", type=["jpg", "jpeg", "png"])
+    if uploaded_file:
+        path = "./database/uploaded_food.jpg"
+        with open(path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        st.image(path, caption="Uploaded Image")
+        foods, nutrition = nutritionist.recognize_and_analyze(path)
+        st.write(nutrition)
+        macros = nutritionist.get_macro_breakdown(nutrition)
+        fig, ax = plt.subplots()
+        ax.pie(macros.values(), labels=macros.keys(), autopct='%1.1f%%')
+        ax.axis("equal")
+        st.pyplot(fig)
+        if st.button("Get Meal Plan"):
+            meal_plan = nutritionist.get_meal_plan()
+            st.write(meal_plan)
+            save_meal_data(foods, nutrition, meal_plan)
+    st_lottie(keto_kat_animation, height=300, key="keto")
