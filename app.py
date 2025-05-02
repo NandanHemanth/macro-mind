@@ -22,6 +22,25 @@ class UserProfileManager:
             "dietary_restriction": ""
         }
         self.init_data()
+    
+    def init_data(self):
+        os.makedirs(os.path.dirname(self.path), exist_ok=True)
+        if not os.path.exists(self.path):
+            self.save_data(**self.default_data)
+
+    def save_data(self, name, height, weight, goal, dietary_restriction):
+        data = {
+            "name": name,
+            "height": height,
+            "weight": weight,
+            "goal": goal,
+            "dietary_restriction": dietary_restriction
+        }
+        with open(self.path, "w") as f:
+            json.dump(data, f, indent=4)
+        
+
+
 
 class LottieLoader:
     @staticmethod
