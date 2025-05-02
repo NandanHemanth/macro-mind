@@ -58,9 +58,6 @@ class UserProfileManager:
             self.init_data()
             return ("", 170, 70, "", "")
         
-
-
-
 class LottieLoader:
     @staticmethod
     def load(url):
@@ -72,6 +69,27 @@ class LottieLoader:
         except:
             return None
         
+        
+class AITrainer:
+    @staticmethod
+    def run(exercise, reps):
+        result = subprocess.run(
+            ["python", "AI_God.py", exercise, str(reps)],
+            capture_output=True,
+            text=True
+        )
+        score, calories = None, None
+        for line in result.stdout.split("\n"):
+            if "Score:" in line and "Calories Burned:" in line:
+                parts = line.split("|")
+                try:
+                    score = float(parts[0].split("Score:")[1].strip().replace("%", ""))
+                    calories = float(parts[1].split("Calories Burned:")[1].strip())
+                except:
+                    pass
+        return score, calories
+
+
 
 class Nutritionist:
     def __init__(self):
