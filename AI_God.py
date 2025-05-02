@@ -144,7 +144,25 @@ class AITrainer:
         cv2.destroyAllWindows()
         self._end_session()
 
-# --- Main Script Execution ---
+    def _end_session(self):
+        average_score = sum(self.score_list) / len(self.score_list) if self.score_list else 0
+        calories_burned = self.CALORIES_PER_REP.get(self.exercise_name, 0) * int(self.count)
+        self._log_exercise(int(self.count), average_score, calories_burned)
+
+        plt.plot(self.score_list, label="Form Score")
+        plt.axhline(y=100, color='r', linestyle='--', label="CBum's Form")
+        plt.xlabel("Frames")
+        plt.ylabel("Score (%)")
+        plt.title(f"{self.exercise_name} Form Score Comparison")
+        plt.legend()
+        plt.savefig("./database/form_score_chart.png")
+
+        print(f"Workout {self.exercise_name} completed with {int(self.count)} reps! "
+              f"Score: {average_score:.2f}% | Calories Burned: {calories_burned:.2f}")
+        print("./database/form_score_chart.png")
+
+
+# --- Main Execution ---
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Error: Please provide an exercise name and rep count.")
@@ -152,6 +170,5 @@ if __name__ == "__main__":
 
     exercise_name = sys.argv[1]
     rep_count = int(sys.argv[2])
-
     trainer = AITrainer(exercise_name, rep_count)
     trainer.start_session()
