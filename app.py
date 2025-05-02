@@ -97,3 +97,9 @@ class Nutritionist:
                 elif "carb" in line.lower():
                     macro_data["Carbs"] += value
         return macro_data
+    
+        #def get_meal_plan(self):
+        #return suggest_recipes(self.detected_foods)
+
+profile_manager = UserProfileManager()
+nutritionist = Nutritionist()
