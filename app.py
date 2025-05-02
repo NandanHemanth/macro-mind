@@ -116,8 +116,20 @@ class Nutritionist:
                     macro_data["Carbs"] += value
         return macro_data
     
-        #def get_meal_plan(self):
-        #return suggest_recipes(self.detected_foods)
+        def get_meal_plan(self):
+            return suggest_recipes(self.detected_foods)
 
 profile_manager = UserProfileManager()
 nutritionist = Nutritionist()
+
+
+keto_kat_animation = LottieLoader.load('https://lottie.host/89ed7481-222e-4850-879d-a96471c32534/3hVtb56VQF.json')
+cbuminator_animation = LottieLoader.load('https://lottie.host/0aa94491-176f-4cfd-a7a3-48fdc2cbc844/A3C89do9KL.json')
+pet_animation = LottieLoader.load("https://lottie.host/27b7d9f3-211d-4ce8-b8a3-453d3e2c5439/0YWqdBtdv7.json")
+shopping_animation = LottieLoader.load('https://lottie.host/bb02a444-4aa8-4fea-bd38-d46fae3b0baf/XDdL3IbPh7.json')
+
+st.sidebar.title("🚀 MacroMind Menu")
+page = st.sidebar.radio("Personal AI Hub", ["🏠 Profile", "🏋️ Cbuminator", "🥗 Keto-Kat", "📊 Flexpert", "🛒 Shopping"])
+
+with st.sidebar:
+    st_lottie(pet_animation, height=200, key="keto_pet")
