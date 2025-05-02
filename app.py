@@ -147,3 +147,15 @@ if page == "🏠 Profile":
         profile_manager.save_data(name, height, weight, goal, dietary_restriction)
         st.success("Profile saved!")
 
+    elif page == "🏋️ Cbuminator":
+        st.header("Meet Cbuminator")
+        exercise = st.selectbox("Choose Exercise", ["Bicep Curls", "Squats", "Push-ups"])
+        reps = st.slider("Reps", 2, 20)
+        if st.button("Start Training"):
+            score, calories = AITrainer.run(exercise, reps)
+            if score is not None and calories is not None:
+                st.success(f"Form Score: {score}%")
+                st.success(f"Calories Burned: {calories} kcal")
+            else:
+                st.error("Could not evaluate performance")
+        st_lottie(cbuminator_animation, height=300, key="cbum")
