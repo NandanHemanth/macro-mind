@@ -52,3 +52,13 @@ class LottieLoader:
             return r.json()
         except:
             return None
+        
+
+class Nutritionist:
+    def __init__(self):
+        self.detected_foods = []
+
+    def recognize_and_analyze(self, image_path):
+        self.detected_foods = recognize_food(image_path)
+        nutrition_facts = get_nutrition_facts(self.detected_foods)
+        return self.detected_foods, nutrition_facts
