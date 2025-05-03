@@ -10,8 +10,10 @@ import subprocess
 import sqlite3
 from streamlit_lottie import st_lottie
 from PIL import Image
+from keto_god import recognize_food, get_nutrition_facts, suggest_recipes, save_meal_data
 import matplotlib.pyplot as plt
 import plotly.express as px
+from flexpert_analytics import load_json_data, load_sqlite_data, fetch_meal_plan
 
 
 
@@ -164,7 +166,26 @@ elif page == "🏋️ Cbuminator":
             st.error("Could not evaluate performance")
 
 
-
+elif page == "🥗 Keto-Kat":
+    st.header("Meet Keto-Kat")
+    uploaded_file = st.file_uploader("Upload food image", type=["jpg", "jpeg", "png"])
+    if uploaded_file:
+        path = "./database/uploaded_food.jpg"
+        with open(path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        st.image(path, caption="Uploaded Image")
+        foods, nutrition = nutritionist.recognize_and_analyze(path)
+        st.write(nutrition)
+        macros = nutritionist.get_macro_breakdown(nutrition)
+        fig, ax = plt.subplots()
+        ax.pie(macros.values(), labels=macros.keys(), autopct='%1.1f%%')
+        ax.axis("equal")
+        st.pyplot(fig)
+        if st.button("Get Meal Plan"):
+            meal_plan = nutritionist.get_meal_plan()
+            st.write(meal_plan)
+            save_meal_data(foods, nutrition, meal_plan)
+    st_lottie(keto_kat_animation, height=300, key="keto")
 
 elif page == "📊 Flexpert":
     st.header("Flexpert Dashboard")
