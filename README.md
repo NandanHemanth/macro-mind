@@ -1,68 +1,80 @@
-# MacroMind: AI-Powered Lifestyle SuperApp 💪
+# 💪 MacroMind – Your Personal AI Fitness and Nutrition Hub
 
-**Team Members:**  
+An intelligent lifestyle assistant built using Streamlit that brings together personalized fitness, smart grocery planning, and AI-powered nutrition insights.
+
+---
+
+## 🚀 Getting Started
+
+Follow the steps below to set up and run the MacroMind application:
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/macro-mind.git
+```
+
+### 2. Navigate to the Project Directory
+```bash
+cd macro-mind
+```
+
+### 3. Create a `.env` File in the Current Directory
+
+### 4. Add the Following Line and Save the File
+```bash
+GEMINI_API_KEY='AIzaSyBURHGqOsIdkmD8SWVmy0K7SUvApoDZel4'
+```
+
+> ⚠️ Make sure to replace the API key with your own if needed.
+
+### 5. Install All Required Python Packages
+```bash
+pip install -r requirements.txt
+```
+
+### 6. Run the Streamlit App
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📦 Requirements
+
+All dependencies are listed in `requirements.txt`. Here's a snapshot:
+
+```text
+mediapipe
+opencv-python
+numpy
+streamlit
+streamlit-lottie
+requests
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
+pandas
+matplotlib
+plotly
+pyzbar
+python-dotenv
+openai
+pytesseract
+ultralytics
+torch
+torchvision
+torchaudio
+```
+
+---
+
+## 👥 Team Members
+
 - Nandan Hemanth  
-- Murali Sai  
 - Nawaz Fateen Khan  
-
-MacroMind is an intelligent fitness and nutrition companion that helps users track workouts, assess form, and manage dietary goals — all through an interactive Streamlit interface.
-
-This SuperApp features real-time pose evaluation, form scoring via webcam using AI (MediaPipe), automated calorie estimation, and animated feedback. It also includes a user profile system and nutrition guidance modules.
+- Murali Sai Buddakkagari Venkata
 
 ---
 
-## 🚀 Key Features
-
-- **🏋️ Workout AI (Cbuminator)**  
-  Real-time form analysis using webcam-based pose detection (via MediaPipe). Calculates:
-  - Form score (frame-wise scoring and visualization)
-  - Estimated calories burned
-  - Repetition count
-
-- **📈 Performance Chart**  
-  After each workout session, the app auto-generates a score graph saved to `./database/form_score_chart.png` and displays it in the UI.
-
-- **🧑 Profile Management**  
-  Save and retrieve user details such as height, weight, fitness goals, and dietary restrictions.
-
-- **🎨 Lottie Animations**  
-  Custom animated feedback enhances user experience in the Streamlit sidebar and pages.
-
----
-
-## 🔧 Prerequisites
-
-Ensure Python 3.8+ is installed and the following libraries are available:
-
-- `streamlit`
-- `opencv-python`
-- `mediapipe`
-- `matplotlib`
-- `pandas`
-- `numpy`
-- `pillow`
-- `requests`
-- `plotly`
-- `streamlit-lottie`
-
----
-
-## 📦 Installation & Setup
-
-1. Clone this repository or download the project files:
-   ```bash
-   git clone https://github.com/NandanHemanth/macro-mind.git
-   ```
-2. Change into the Current working repository
-   ```bash
-   cd MacroMind
-   ```
-
-3. Install the required dependencies by running the following command:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Run the application using Streamlit:
-    ```bash
-    streamlit run app.py
-    ```
+🛠 Built with ❤️ using Python, Streamlit, and Gemini API.
