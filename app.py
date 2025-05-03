@@ -10,10 +10,11 @@ import subprocess
 import sqlite3
 from streamlit_lottie import st_lottie
 from PIL import Image
-from keto_god import recognize_food, get_nutrition_facts, suggest_recipes, save_meal_data
+from keto_god import FoodAnalyzer
 import matplotlib.pyplot as plt
 import plotly.express as px
-from flexpert_analytics import load_json_data, load_sqlite_data, fetch_meal_plan
+from flexpert_analytics import FitnessDashboard
+from shopping import GroceryChecklist
 
 
 
@@ -97,8 +98,10 @@ class Nutritionist:
         self.detected_foods = []
 
     def recognize_and_analyze(self, image_path):
-        self.detected_foods = recognize_food(image_path)
-        nutrition_facts = get_nutrition_facts(self.detected_foods)
+        analyzer = FoodAnalyzer()
+        self.detected_foods = analyzer.recognize_food(image_path)
+
+        nutrition_facts = analyzer.get_nutrition_facts(self.detected_foods)
         return self.detected_foods, nutrition_facts
 
     def get_macro_breakdown(self, nutrition_facts):
@@ -118,6 +121,8 @@ class Nutritionist:
         return macro_data
     
 
+    def get_meal_plan(self):
+        return FoodAnalyzer.suggest_recipes(self.detected_foods)
 
 profile_manager = UserProfileManager()
 nutritionist = Nutritionist()
@@ -129,7 +134,7 @@ pet_animation = LottieLoader.load("https://lottie.host/27b7d9f3-211d-4ce8-b8a3-4
 shopping_animation = LottieLoader.load('https://lottie.host/bb02a444-4aa8-4fea-bd38-d46fae3b0baf/XDdL3IbPh7.json')
 
 st.sidebar.title("🚀 MacroMind Menu")
-page = st.sidebar.radio("Personal AI Hub", ["🏠 Profile", "🏋️ Cbuminator"])
+page = st.sidebar.radio("Personal AI Hub", ["🏠 Profile", "🏋️ Cbuminator", "🥗 Keto-Kat", "📊 Flexpert", "🛒 Shopping"])
 
 with st.sidebar:
     st_lottie(pet_animation, height=200, key="keto_pet")
@@ -183,36 +188,45 @@ elif page == "🥗 Keto-Kat":
         if st.button("Get Meal Plan"):
             meal_plan = nutritionist.get_meal_plan()
             st.write(meal_plan)
-            save_meal_data(foods, nutrition, meal_plan)
+            FitnessDashboard.save_meal_data(foods, nutrition, meal_plan)
     st_lottie(keto_kat_animation, height=300, key="keto")
 
 elif page == "📊 Flexpert":
     st.header("Flexpert Dashboard")
-    exercise_log = load_json_data("./database/exercise_log.json")
-    user_data = load_json_data("./database/user_data.json")
-    exercise_df = load_sqlite_data()
+    dashboard = FitnessDashboard()
+    exercise_log = dashboard.load_json_data("./database/exercise_log.json")
+    user_data = dashboard.load_json_data("./database/user_data.json")
+    exercise_df = dashboard.load_sqlite_data()
+
     if st.button("Generate Plan"):
-        meal_plan = fetch_meal_plan(
+        meal_plan = dashboard.fetch_meal_plan(
             [log["exercise_name"] for log in exercise_log],
             user_data.get("goal", "Maintain")
         )
         st.subheader("Meal Plan")
         st.write(meal_plan)
+
         st.subheader("Performance Charts")
         st.plotly_chart(px.bar(exercise_df, x="timestamp", y="calories", color="exercise_name"))
         st.plotly_chart(px.line(exercise_df, x="timestamp", y="score", color="exercise_name"))
 
 elif page == "🛒 Shopping":
     st.header("Smart Grocery Shopping")
-    from shopping import load_meal_plan_log, generate_grocery_list, create_grocery_table
-    meal_log = load_meal_plan_log()
+    
+    grocery = GroceryChecklist()
+    meal_log = grocery.load_meal_plan_log()
+
+
+
+
     if meal_log:
         meal_plan = meal_log[-1]["meal_plan"]
-        grocery_list = generate_grocery_list(meal_plan)
-        grocery_df = create_grocery_table(grocery_list)
+        grocery_list = grocery.generate_grocery_list(meal_plan)
+        grocery_df = grocery.create_grocery_table(grocery_list)
         st.dataframe(grocery_df)
         for _, row in grocery_df.iterrows():
-            st.markdown(f"[Buy {row['Item']}]({row['Wakefern Link']})")
+            st.markdown(f"[Buy {row['Item']}]({row['Walmart Link']})")
+
     else:
         st.warning("No meal plans available.")
     st_lottie(shopping_animation, height=300, key="shop")
