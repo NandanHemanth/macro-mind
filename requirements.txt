@@ -3,3 +3,13 @@ opencv-python
 numpy
 streamlit
 streamlit-lottie
+pandas
+matplotlib
+plotly
+pyzbar
+torch
+torchvision
+torchaudio
+
+
+
