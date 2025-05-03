@@ -69,6 +69,37 @@ torchaudio
 
 ---
 
+## 🧪 Demo Instructions (Step-by-Step)
+
+After launching the app using `streamlit run app.py`, follow these steps to experience the full workflow:
+
+### 1. Create Your Profile
+- Navigate to the **Profile** section.
+- Enter your name, height, weight, goal, and dietary restrictions.
+- Click **Save Profile**.
+
+### 2. Start a Training Session
+- Go to **Cbuminator**.
+- Select **"Bicep Curls"** as the exercise.
+- Choose the number of reps using the slider.
+- Click **Start Training** to get form scores and calories burned.
+
+### 3. Upload a Food Image
+- Go to **Keto-Kat**.
+- Upload an image of a refrigerator with food (available in the `macro-mind` repo or use your own image).
+- The app will recognize foods, show nutrition stats, and suggest a meal plan based on your inputs.
+
+### 4. Generate a Personalized Diet Plan
+- Navigate to **Flexpert**.
+- Click **Generate Plan**.
+- The app will create a daily diet plan and display performance analytics.
+
+### 5. Get Smart Grocery Recommendations
+- Visit the **Shopping** section.
+- You will see shopping links automatically generated from your meal plan.
+
+> ⚠️ Please follow each step in order to unlock the complete experience and results!
+
 ## 👥 Team Members
 
 - Nandan Hemanth  
