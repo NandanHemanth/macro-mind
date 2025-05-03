@@ -154,9 +154,15 @@ elif page == "🏋️ Cbuminator":
         if score is not None and calories is not None:
             st.success(f"Form Score: {score}%")
             st.success(f"Calories Burned: {calories} kcal")
+
+            chart_path = "./database/form_score_chart.png"
+            if os.path.exists(chart_path):
+                st.image(chart_path, caption="Your Form Score Over Time", use_container_width=True)
+            else:
+                st.warning("Form score chart not found.")
         else:
             st.error("Could not evaluate performance")
-    st_lottie(cbuminator_animation, height=300, key="cbum")
+
 
 
 st.markdown("""
