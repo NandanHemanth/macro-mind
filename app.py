@@ -185,10 +185,10 @@ elif page == "🥗 Keto-Kat":
         ax.pie(macros.values(), labels=macros.keys(), autopct='%1.1f%%')
         ax.axis("equal")
         st.pyplot(fig)
-        if st.button("Get Meal Plan"):
-            meal_plan = nutritionist.get_meal_plan()
-            st.write(meal_plan)
-            FitnessDashboard.save_meal_data(foods, nutrition, meal_plan)
+        # if st.button("Get Meal Plan"):
+        #     meal_plan = nutritionist.get_meal_plan()
+        #     st.write(meal_plan)
+        #     FitnessDashboard.save_meal_data(foods, nutrition, meal_plan)
     st_lottie(keto_kat_animation, height=300, key="keto")
 
 elif page == "📊 Flexpert":
