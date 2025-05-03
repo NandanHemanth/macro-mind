@@ -165,7 +165,6 @@ elif page == "🏋️ Cbuminator":
         else:
             st.error("Could not evaluate performance")
 
-
 elif page == "🥗 Keto-Kat":
     st.header("Meet Keto-Kat")
     uploaded_file = st.file_uploader("Upload food image", type=["jpg", "jpeg", "png"])
@@ -203,7 +202,20 @@ elif page == "📊 Flexpert":
         st.plotly_chart(px.bar(exercise_df, x="timestamp", y="calories", color="exercise_name"))
         st.plotly_chart(px.line(exercise_df, x="timestamp", y="score", color="exercise_name"))
 
-
+elif page == "🛒 Shopping":
+    st.header("Smart Grocery Shopping")
+    from shopping import load_meal_plan_log, generate_grocery_list, create_grocery_table
+    meal_log = load_meal_plan_log()
+    if meal_log:
+        meal_plan = meal_log[-1]["meal_plan"]
+        grocery_list = generate_grocery_list(meal_plan)
+        grocery_df = create_grocery_table(grocery_list)
+        st.dataframe(grocery_df)
+        for _, row in grocery_df.iterrows():
+            st.markdown(f"[Buy {row['Item']}]({row['Wakefern Link']})")
+    else:
+        st.warning("No meal plans available.")
+    st_lottie(shopping_animation, height=300, key="shop")
 
 st.markdown("""
 <style>
