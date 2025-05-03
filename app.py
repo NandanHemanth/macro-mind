@@ -165,6 +165,25 @@ elif page == "🏋️ Cbuminator":
 
 
 
+
+elif page == "📊 Flexpert":
+    st.header("Flexpert Dashboard")
+    exercise_log = load_json_data("./database/exercise_log.json")
+    user_data = load_json_data("./database/user_data.json")
+    exercise_df = load_sqlite_data()
+    if st.button("Generate Plan"):
+        meal_plan = fetch_meal_plan(
+            [log["exercise_name"] for log in exercise_log],
+            user_data.get("goal", "Maintain")
+        )
+        st.subheader("Meal Plan")
+        st.write(meal_plan)
+        st.subheader("Performance Charts")
+        st.plotly_chart(px.bar(exercise_df, x="timestamp", y="calories", color="exercise_name"))
+        st.plotly_chart(px.line(exercise_df, x="timestamp", y="score", color="exercise_name"))
+
+
+
 st.markdown("""
 <style>
 .footer {
