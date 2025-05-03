@@ -149,6 +149,7 @@ class AITrainer:
         calories_burned = self.CALORIES_PER_REP.get(self.exercise_name, 0) * int(self.count)
         self._log_exercise(int(self.count), average_score, calories_burned)
 
+        os.makedirs("./database", exist_ok=True)  # ✅ Ensure the folder exists
         plt.plot(self.score_list, label="Form Score")
         plt.axhline(y=100, color='r', linestyle='--', label="CBum's Form")
         plt.xlabel("Frames")
@@ -158,8 +159,9 @@ class AITrainer:
         plt.savefig("./database/form_score_chart.png")
 
         print(f"Workout {self.exercise_name} completed with {int(self.count)} reps! "
-              f"Score: {average_score:.2f}% | Calories Burned: {calories_burned:.2f}")
-        print("./database/form_score_chart.png")
+            f"Score: {average_score:.2f}% | Calories Burned: {calories_burned:.2f}")
+        print("./database/form_score_chart.png")  # Used by app.py to detect chart
+
 
 
 # --- Main Execution ---
