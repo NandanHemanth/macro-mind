@@ -39,35 +39,6 @@ streamlit run app.py
 
 ---
 
-## 📦 Requirements
-
-All dependencies are listed in `requirements.txt`. Here's a snapshot:
-
-```text
-mediapipe
-opencv-python
-numpy
-streamlit
-streamlit-lottie
-requests
-google-auth
-google-auth-oauthlib
-google-auth-httplib2
-google-api-python-client
-pandas
-matplotlib
-plotly
-pyzbar
-python-dotenv
-openai
-pytesseract
-ultralytics
-torch
-torchvision
-torchaudio
-```
-
----
 
 ## 🧪 Demo Instructions (Step-by-Step)
 
