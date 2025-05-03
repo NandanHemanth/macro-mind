@@ -1,29 +1,68 @@
-# Macro-Mind : LifeStyle SuperApp
-## Nandan Hemanth
-## Murali Sai
-## Nawaz Fateen Khan
+# MacroMind: AI-Powered Lifestyle SuperApp 💪
 
-This project provides a simple video recording application using Streamlit. It allows the user to start a 30-second video recording from the webcam and save it in a local directory (`./recording`). The recording functionality is encapsulated in a Python class, while the user interface is built with Streamlit.
+**Team Members:**  
+- Nandan Hemanth  
+- Murali Sai  
+- Nawaz Fateen Khan  
 
-## Features:
-- **30-second video recording**: Records video for 30 seconds or until manually stopped.
-- **Streamlit Interface**: Provides a simple and user-friendly web interface to start and stop recording.
-- **Save Videos Locally**: Videos are saved in the `./recording` directory.
-- **Basic Webcam Interaction**: Allows users to capture video using the webcam.
+MacroMind is an intelligent fitness and nutrition companion that helps users track workouts, assess form, and manage dietary goals — all through an interactive Streamlit interface.
 
-## Prerequisites:
-Ensure you have Python installed. The project uses the following libraries:
+This SuperApp features real-time pose evaluation, form scoring via webcam using AI (MediaPipe), automated calorie estimation, and animated feedback. It also includes a user profile system and nutrition guidance modules.
+
+---
+
+## 🚀 Key Features
+
+- **🏋️ Workout AI (Cbuminator)**  
+  Real-time form analysis using webcam-based pose detection (via MediaPipe). Calculates:
+  - Form score (frame-wise scoring and visualization)
+  - Estimated calories burned
+  - Repetition count
+
+- **📈 Performance Chart**  
+  After each workout session, the app auto-generates a score graph saved to `./database/form_score_chart.png` and displays it in the UI.
+
+- **🧑 Profile Management**  
+  Save and retrieve user details such as height, weight, fitness goals, and dietary restrictions.
+
+- **🎨 Lottie Animations**  
+  Custom animated feedback enhances user experience in the Streamlit sidebar and pages.
+
+---
+
+## 🔧 Prerequisites
+
+Ensure Python 3.8+ is installed and the following libraries are available:
+
 - `streamlit`
 - `opencv-python`
+- `mediapipe`
+- `matplotlib`
+- `pandas`
+- `numpy`
+- `pillow`
+- `requests`
+- `plotly`
+- `streamlit-lottie`
 
-## Installation:
+---
 
-1. Clone the repository or download the project files.
-2. Install the required dependencies by running the following command:
+## 📦 Installation & Setup
+
+1. Clone this repository or download the project files:
+   ```bash
+   git clone https://github.com/NandanHemanth/macro-mind.git
+   ```
+2. Change into the Current working repository
+   ```bash
+   cd MacroMind
+   ```
+
+3. Install the required dependencies by running the following command:
    ```bash
    pip install -r requirements.txt
    ```
-3. Run the application using Streamlit:
+4. Run the application using Streamlit:
     ```bash
     streamlit run app.py
     ```
