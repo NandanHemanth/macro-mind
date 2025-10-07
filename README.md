@@ -1,1 +1,4 @@
 # macro-mind
+---
+## A Fitness & Lifestyle SuperApp!
+> An AI-powered platform which uses Computer-Vision -> Google-ML-kit (pose detection), OpenCV for real-time posture and form detection counting reps, analysing form and providing Audio Feedback and Motivation in real-time! Uses Advanced reasoning capabilities for meal-planning, curated shopping lists and personalized nutrition. Enhancing calorie and nutrition tracking( protein, carbs, fiber, fats and water) with a click of a picture! AI-personalised chef which suggest curated meal recipies with available ingridients and taking into consideration fitness goals, dietry restrictions and injuries to get healthy, quick rich meal-prep. Backed by Research, science-based lifting and quick reads to enhance knowledge in Nutrition, workout and lifestyle!
