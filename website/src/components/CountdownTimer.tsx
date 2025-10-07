@@ -42,10 +42,10 @@ export default function CountdownTimer() {
   }, []);
 
   return (
-    <section className="py-32 bg-black/30 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <div className="mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 text-center">
+    <section className="py-48 bg-black/30 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-4 text-center">
+        <div className="mb-24">
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-10 text-center">
             Launch Countdown
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 text-center">
@@ -53,60 +53,51 @@ export default function CountdownTimer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-5xl mx-auto mb-16">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
+        <div className="flex justify-center items-center gap-8 flex-wrap max-w-5xl mx-auto pb-16">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-10 border border-white/20 min-w-[160px]">
+            <div className="text-5xl md:text-7xl font-bold text-white mb-4">
               {timeLeft.weeks}
             </div>
-            <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
+            <div className="text-base md:text-lg text-gray-300 uppercase tracking-wider font-semibold">
               Weeks
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-10 border border-white/20 min-w-[160px]">
+            <div className="text-5xl md:text-7xl font-bold text-white mb-4">
               {timeLeft.days}
             </div>
-            <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
+            <div className="text-base md:text-lg text-gray-300 uppercase tracking-wider font-semibold">
               Days
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-10 border border-white/20 min-w-[160px]">
+            <div className="text-5xl md:text-7xl font-bold text-white mb-4">
               {timeLeft.hours}
             </div>
-            <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
+            <div className="text-base md:text-lg text-gray-300 uppercase tracking-wider font-semibold">
               Hours
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-10 border border-white/20 min-w-[160px]">
+            <div className="text-5xl md:text-7xl font-bold text-white mb-4">
               {timeLeft.minutes}
             </div>
-            <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
+            <div className="text-base md:text-lg text-gray-300 uppercase tracking-wider font-semibold">
               Minutes
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-10 border border-white/20 min-w-[160px]">
+            <div className="text-5xl md:text-7xl font-bold text-white mb-4">
               {timeLeft.seconds}
             </div>
-            <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
+            <div className="text-base md:text-lg text-gray-300 uppercase tracking-wider font-semibold">
               Seconds
             </div>
           </div>
-        </div>
-
-        <div className="text-center">
-          <a
-            href="mailto:nhemanth@stevens.edu"
-            className="inline-block px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold text-xl text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
-            Get Early Access
-          </a>
         </div>
       </div>
     </section>
