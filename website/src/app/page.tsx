@@ -8,6 +8,13 @@ import About from '@/components/About';
 import CountdownTimer from '@/components/CountdownTimer';
 import Footer from '@/components/Footer';
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    VANTA?: any;
+  }
+}
+
 export default function Home() {
   useEffect(() => {
     const threeScript = document.createElement('script');

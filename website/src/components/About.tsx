@@ -27,9 +27,9 @@ export default function About() {
 
           <div className="pt-[80px] border-t border-white/20 center">
             <p className="text-gray-300 text-xl md:text-2xl leading-relaxed text-center italic mb-[600px]">
-              "My vision is to revolutionize how people approach fitness and nutrition by leveraging
-              the power of AI and computer vision. MacroMind isn't just an app – it's a comprehensive
-              ecosystem designed to make healthy living intuitive, personalized, and sustainable."
+              &ldquo;My vision is to revolutionize how people approach fitness and nutrition by leveraging
+              the power of AI and computer vision. MacroMind isn&apos;t just an app &ndash; it&apos;s a comprehensive
+              ecosystem designed to make healthy living intuitive, personalized, and sustainable.&rdquo;
             </p>
             <div className="text-center">
               <span className="text-blue-400 font-semibold text-xl">— Nandan Hemanth</span>
