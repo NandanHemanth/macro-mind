@@ -43,9 +43,9 @@ export default function CountdownTimer() {
 
   return (
     <section className="py-48 bg-black/30 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <div className="mb-24">
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-10 text-center">
+      <div className="max-w-7xl mx-auto px-4 text-center flex flex-col items-center">
+        <div className="mb-[200px]">
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-[80px] text-center">
             Launch Countdown
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 text-center">
@@ -53,7 +53,7 @@ export default function CountdownTimer() {
           </p>
         </div>
 
-        <div className="flex justify-center items-center gap-8 flex-wrap max-w-5xl mx-auto pb-16">
+        <div className="flex justify-center items-center gap-8 flex-wrap max-w-5xl pb-16 pt-[100px]">
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-10 border border-white/20 min-w-[160px]">
             <div className="text-5xl md:text-7xl font-bold text-white mb-4">
               {timeLeft.weeks}

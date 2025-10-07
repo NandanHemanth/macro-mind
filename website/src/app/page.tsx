@@ -40,8 +40,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div id="vanta-background" className="min-h-screen">
-      <main className="relative z-10">
+    <div id="vanta-background" className="min-h-screen flex flex-col">
+      <main className="relative z-10 flex-grow">
         <Navbar />
         <Hero />
         <section id="countdown" className="scroll-mt-16">
@@ -53,8 +53,8 @@ export default function Home() {
         <section id="about" className="scroll-mt-16">
           <About />
         </section>
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }
