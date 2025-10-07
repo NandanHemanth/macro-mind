@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/macro-mind',
+  basePath: '/macromind',
   images: {
     unoptimized: true,
   },
