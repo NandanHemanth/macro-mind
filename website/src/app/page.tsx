@@ -44,13 +44,13 @@ export default function Home() {
       <main className="relative z-10">
         <Navbar />
         <Hero />
-        <section id="countdown">
+        <section id="countdown" className="scroll-mt-16">
           <CountdownTimer />
         </section>
-        <section id="features">
+        <section id="features" className="scroll-mt-16">
           <Features />
         </section>
-        <section id="about">
+        <section id="about" className="scroll-mt-16">
           <About />
         </section>
         <Footer />

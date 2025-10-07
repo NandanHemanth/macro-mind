@@ -42,18 +42,20 @@ export default function CountdownTimer() {
   }, []);
 
   return (
-    <section className="py-20 bg-black/30 backdrop-blur-sm">
+    <section className="py-32 bg-black/30 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 text-center">
-          Launch Countdown
-        </h2>
-        <p className="text-xl text-gray-300 mb-12 text-center">
-          The future of fitness is coming January 2026
-        </p>
+        <div className="mb-16">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 text-center">
+            Launch Countdown
+          </h2>
+          <p className="text-xl md:text-2xl text-gray-300 text-center">
+            The future of fitness is coming January 2026
+          </p>
+        </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <div className="text-3xl md:text-5xl font-bold text-white mb-2">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-5xl mx-auto mb-16">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
               {timeLeft.weeks}
             </div>
             <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
@@ -61,8 +63,8 @@ export default function CountdownTimer() {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <div className="text-3xl md:text-5xl font-bold text-white mb-2">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
               {timeLeft.days}
             </div>
             <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
@@ -70,8 +72,8 @@ export default function CountdownTimer() {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <div className="text-3xl md:text-5xl font-bold text-white mb-2">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
               {timeLeft.hours}
             </div>
             <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
@@ -79,8 +81,8 @@ export default function CountdownTimer() {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <div className="text-3xl md:text-5xl font-bold text-white mb-2">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
               {timeLeft.minutes}
             </div>
             <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
@@ -88,8 +90,8 @@ export default function CountdownTimer() {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <div className="text-3xl md:text-5xl font-bold text-white mb-2">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+            <div className="text-4xl md:text-6xl font-bold text-white mb-3">
               {timeLeft.seconds}
             </div>
             <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
@@ -98,10 +100,10 @@ export default function CountdownTimer() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="text-center">
           <a
             href="mailto:nhemanth@stevens.edu"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold text-lg text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
+            className="inline-block px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold text-xl text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Get Early Access
           </a>

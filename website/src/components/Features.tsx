@@ -54,56 +54,56 @@ export default function Features() {
   const [featuresRef, featuresVisible] = useScrollAnimation();
 
   return (
-    <section className="py-20 bg-black/30 backdrop-blur-sm">
-      <div className="max-w-4xl mx-auto px-4">
-        <div ref={titleRef} className={`text-center mb-16 fade-in ${titleVisible ? 'visible' : ''}`}>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 text-center">
+    <section className="py-32 bg-black/30 backdrop-blur-sm">
+      <div className="max-w-6xl mx-auto px-4">
+        <div ref={titleRef} className={`text-center mb-20 fade-in ${titleVisible ? 'visible' : ''}`}>
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 text-center">
             What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">MacroMind</span>?
           </h2>
         </div>
 
         <div ref={featuresRef} className={`text-center slide-in-left ${featuresVisible ? 'visible' : ''}`}>
-          <div className={`bg-gradient-to-br ${features[activeFeature].color} rounded-3xl p-12 text-white mx-auto max-w-2xl`}>
-            <div className="text-8xl mb-8 text-center">{features[activeFeature].icon}</div>
-            <h3 className="text-4xl font-bold mb-4 text-center">{features[activeFeature].title}</h3>
-            <h4 className="text-2xl font-semibold mb-6 text-center text-white/80">
-              {features[activeFeature].subtitle}
-            </h4>
-            <p className="text-xl leading-relaxed text-center text-white/90 mb-8">
-              {features[activeFeature].description}
-            </p>
-          </div>
-
-          <div className="flex justify-center items-center mt-12 space-x-8">
+          <div className={`relative bg-gradient-to-br ${features[activeFeature].color} rounded-3xl p-12 text-white mx-auto max-w-3xl`}>
+            {/* Left Arrow Button */}
             <button
               onClick={() => setActiveFeature(activeFeature > 0 ? activeFeature - 1 : features.length - 1)}
-              className="p-4 bg-white/20 backdrop-blur-lg rounded-full hover:bg-white/30 transition-all duration-300 text-white"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/20 backdrop-blur-lg rounded-full hover:bg-white/30 transition-all duration-300 text-white z-10"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
 
-            <div className="flex space-x-2">
-              {features.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    activeFeature === index ? 'bg-blue-400' : 'bg-white/30'
-                  }`}
-                  onClick={() => setActiveFeature(index)}
-                />
-              ))}
-            </div>
-
+            {/* Right Arrow Button */}
             <button
               onClick={() => setActiveFeature(activeFeature < features.length - 1 ? activeFeature + 1 : 0)}
-              className="p-4 bg-white/20 backdrop-blur-lg rounded-full hover:bg-white/30 transition-all duration-300 text-white"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/20 backdrop-blur-lg rounded-full hover:bg-white/30 transition-all duration-300 text-white z-10"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
+
+            <div className="text-8xl mb-8 text-center">{features[activeFeature].icon}</div>
+            <h3 className="text-4xl font-bold mb-4 text-center">{features[activeFeature].title}</h3>
+            <h4 className="text-2xl font-semibold mb-6 text-center text-white/80">
+              {features[activeFeature].subtitle}
+            </h4>
+            <p className="text-xl leading-relaxed text-center text-white/90 mb-8 px-8">
+              {features[activeFeature].description}
+            </p>
+
+            {/* Dot Indicators */}
+            <div className="flex justify-center space-x-2 mt-8">
+              {features.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${activeFeature === index ? 'bg-white' : 'bg-white/40'
+                    }`}
+                  onClick={() => setActiveFeature(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

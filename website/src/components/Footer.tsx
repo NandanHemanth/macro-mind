@@ -4,15 +4,20 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black/50 backdrop-blur-lg text-white py-12 border-t border-white/10">
+    <footer className="bg-black/50 backdrop-blur-lg text-white py-16 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center space-x-2 mb-6">
-            <div className="text-3xl font-bold">
-              macro<span className="text-blue-400">mind</span>
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center space-x-3 mb-8">
+            <img 
+              src="/MacroMind_T.png" 
+              alt="MacroMind Logo" 
+              className="w-12 h-12 object-contain"
+            />
+            <div className="text-4xl font-bold">
+              Macro<span className="text-blue-400">Mind</span>
             </div>
           </div>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-center">
+          <p className="text-gray-300 mb-12 max-w-3xl mx-auto text-center text-xl leading-relaxed">
             Revolutionizing fitness and nutrition with AI-powered computer vision,
             personalized meal planning, and science-based training. Every rep counts!
           </p>
@@ -54,18 +59,18 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="mb-8">
+          <div className="mb-12">
             <a
               href="mailto:nhemanth@stevens.edu"
-              className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold text-lg text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="inline-block px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold text-xl text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               Get Early Access
             </a>
           </div>
         </div>
 
-        <div className="border-t border-white/20 pt-8 text-center">
-          <div className="text-gray-400 text-sm">
+        <div className="border-t border-white/20 pt-12 text-center">
+          <div className="text-gray-400 text-base">
             © {currentYear} MacroMind. All rights reserved. Designed & Built by Nandan Hemanth.
           </div>
         </div>
